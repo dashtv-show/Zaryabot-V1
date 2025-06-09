@@ -1,12 +1,13 @@
 {
   "name": "ZARYA-MD",
   "version": "1.0.0",
-  "description": "A WhatsApp Bot Created By DAWENS BOY TECH",
+  "description": "A WhatsApp & Telegram Bot Created By DAWENS BOY TECH",
   "main": "index.js",
   "scripts": {
     "start": "pm2 start index.js --deep-monitoring --attach --name ZARYA-MD",
-    "stop": "pm2 stop ZARYA-MD",
-    "restart": "pm2 restart ZARYA-MD"
+    "start-telegram": "pm2 start telegram.js --name ZARYA-TG", 
+    "stop": "pm2 stop ZARYA-MD && pm2 stop ZARYA-TG",
+    "restart": "pm2 restart ZARYA-MD && pm2 restart ZARYA-TG"
   },
   "dependencies": {
     "@whiskeysockets/baileys": "^6.7.9",
@@ -14,7 +15,7 @@
     "@dark-yasiya/yt-dl.js": "1.0.5",
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "@vitalets/google-translate-api": "^9.2.0",
-    "@dark-yasiya/scrap": "1.0.1",    
+    "@dark-yasiya/scrap": "1.0.1",
     "pino": "^7.0.5",
     "pm2": "^6.0.5",
     "util": "^0.12.4",
@@ -49,6 +50,8 @@
     "api-dylux": "1.8.5",
     "@mrnima/tiktok-downloader": "1.0.0",
     "@mrnima/facebook-downloader": "1.0.0",
-    "mrnima-moviedl": "1.0.0"
+    "mrnima-moviedl": "1.0.0",
+    "node-telegram-bot-api": "^0.61.0",
+    "dotenv": "^16.4.5"
   }
 }
