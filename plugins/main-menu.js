@@ -9,7 +9,7 @@ cmd({
   use: '.menu',
   desc: "Show all bot commands",
   category: "menu",
-  react: "🐍",
+  react: "🍷",
   filename: __filename
 },
 async (conn, mek, m, { from, reply }) => {
@@ -48,11 +48,11 @@ async (conn, mek, m, { from, reply }) => {
 
     const keys = Object.keys(category).sort();
     for (let k of keys) {
-      menuText += `\n\n🔸『 *${k.toUpperCase()}* 』\n`;
+      menuText += `\n\n🌺『 *${k.toUpperCase()}* 』\n`;
       const cmds = category[k].filter(c => c.pattern).sort((a, b) => a.pattern.localeCompare(b.pattern));
       cmds.forEach((cmd) => {
         const usage = cmd.pattern.split('|')[0];
-        menuText += `🌀 *${config.PREFIX}${usage}*\n`;
+        menuText += `🌸 *${config.PREFIX}${usage}*\n`;
       });
       menuText += `━━━━━━━━━━━━━━━`;
     }
