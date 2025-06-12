@@ -3,6 +3,16 @@ const moment = require('moment-timezone');
 const { cmd, commands } = require('../command');
 const axios = require('axios');
 
+function toSmallCaps(str) {
+  const smallCaps = {
+    A: 'ᴀ', B: 'ʙ', C: 'ᴄ', D: 'ᴅ', E: 'ᴇ', F: 'ғ', G: 'ɢ', H: 'ʜ',
+    I: 'ɪ', J: 'ᴊ', K: 'ᴋ', L: 'ʟ', M: 'ᴍ', N: 'ɴ', O: 'ᴏ', P: 'ᴘ',
+    Q: 'ǫ', R: 'ʀ', S: 's', T: 'ᴛ', U: 'ᴜ', V: 'ᴠ', W: 'ᴡ', X: 'x',
+    Y: 'ʏ', Z: 'ᴢ'
+  };
+  return str.toUpperCase().split('').map(c => smallCaps[c] || c).join('');
+}
+
 cmd({
   pattern: "menu",
   alias: ["allmenu", "gotar"],
@@ -25,22 +35,22 @@ async (conn, mek, m, { from, reply }) => {
       return `${h}h ${m}m ${s}s`;
     };
 
-    // Nouveau style de menu
-     let menuText = `
-🩸 *WELCOME TO ZARYA-MD* 🍷
+    let menuText = `
+╭━━━〘 *ZARYA MD* 〙━━━╮
+┃★│ 👤 *Utilisateur* : @${m.sender.split("@")[0]}
+┃★│ ⏱️ *Uptime* : ${uptime()}
+┃★│ ⚙️ *Mode* : ${config.MODE}
+┃★│ 💠 *Préfixe* : [${config.PREFIX}]
+┃★│ 📦 *Modules* : ${totalCommands}
+┃★│ 👨‍💻 *Dev* : DAWENS BOY🩸
+┃★│ 🔖 *Version* : 1.0.0 aura💀🍷
+┃★│ 📆 *Date* : ${date}
+┃★╰──────────────
+╰━━━━━━━━━━━━━━━┈⊷
 
-╭━━━〔 *ZARYA MD* 〕━━━╮
-┃ 👤 *Utilisateur* : @${m.sender.split("@")[0]}
-┃ ⏱️ *Uptime* : ${uptime()}
-┃ ⚙️ *Mode* : ${config.MODE}
-┃ 💠 *Préfixe* : [${config.PREFIX}]
-┃ 📦 *Modules* : ${totalCommands}
-┃ 👨‍💻 *Dev* : DAWENS BOY🩸
-┃ 🔖 *Version* : 1.0.0 aura💀🍷
-┃ 📆 *Date* : ${date}
-╰━━━━━━━━━━━━━━━━━━━╯`;
+🩸 *_WELCOME TO ZARYA MD_* 🩸
+`;
 
-    // Organisation par catégorie
     let category = {};
     for (let cmd of commands) {
       if (!cmd.category) continue;
@@ -54,12 +64,11 @@ async (conn, mek, m, { from, reply }) => {
       const cmds = category[k].filter(c => c.pattern).sort((a, b) => a.pattern.localeCompare(b.pattern));
       cmds.forEach((cmd) => {
         const usage = cmd.pattern.split('|')[0];
-        menuText += `🌸 *${config.PREFIX}${usage}*\n`;
+        menuText += `🌸 *${config.PREFIX}${toSmallCaps(usage)}*\n`;
       });
-      menuText += `━━━━━━━━━━━━━━━`;
+      menuText += `╰─────────────✦`;
     }
 
-    // Envoyer le menu avec image
     await conn.sendMessage(from, {
       image: { url: 'https://files.catbox.moe/pbamxw.jpeg' },
       caption: menuText,
