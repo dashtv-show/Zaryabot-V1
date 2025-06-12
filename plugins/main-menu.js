@@ -26,15 +26,17 @@ async (conn, mek, m, { from, reply }) => {
     };
 
     // Nouveau style de menu
-    let menuText = `
+     let menuText = `
+🩸 *WELCOME TO ZARYA-MD* 🍷
+
 ╭━━━〔 *ZARYA MD* 〕━━━╮
 ┃ 👤 *Utilisateur* : @${m.sender.split("@")[0]}
 ┃ ⏱️ *Uptime* : ${uptime()}
 ┃ ⚙️ *Mode* : ${config.MODE}
 ┃ 💠 *Préfixe* : [${config.PREFIX}]
 ┃ 📦 *Modules* : ${totalCommands}
-┃ 👨‍💻 *Dev* : DAWENS BOY
-┃ 🔖 *Version* : 1.0.0
+┃ 👨‍💻 *Dev* : DAWENS BOY🩸
+┃ 🔖 *Version* : 1.0.0 aura💀🍷
 ┃ 📆 *Date* : ${date}
 ╰━━━━━━━━━━━━━━━━━━━╯`;
 
