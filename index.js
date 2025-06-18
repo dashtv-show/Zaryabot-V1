@@ -44,7 +44,7 @@ const {
   const path = require('path')
   const prefix = config.PREFIX
   
-  const ownerNumber = ['50942241547']
+  const ownerNumber = ['50933734591']
   
   const tempDir = path.join(os.tmpdir(), 'cache-temp')
   if (!fs.existsSync(tempDir)) {
@@ -68,7 +68,7 @@ const {
   //===================SESSION-AUTH============================
 if (!fs.existsSync(__dirname + '/sessions/creds.json')) {
 if(!config.SESSION_ID) return console.log('Please add your session to SESSION_ID env !!')
-const sessdata = config.SESSION_ID.replace("ZARYA~MD~", '');
+const sessdata = config.SESSION_ID.replace("K1NG~XMD~", '');
 const filer = File.fromURL(`https://mega.nz/file/${sessdata}`)
 filer.download((err, data) => {
 if(err) throw err
@@ -111,18 +111,18 @@ const port = process.env.PORT || 9090;
   }
   });
   console.log('Plugins installed successful ✅')
-  console.log('ZARYA-MD CONNECTED SUCCESSFULLY ✅')
+  console.log('K1NG-XMD CONNECTED SUCCESSFULLY ✅')
   
   let up = `
 ╔═════════════════
-║ *ZARYA-MD CONNECTED🪫*      
+║ *K1NG-XMD CONNECTED🪫*      
 ╠═════════════════
-║ *⚡DAWENS BOY TECH*        
+║ *⚡K1NG TECH*        
 ╠═════════════════
 ║ *🧩 YOUR PREFIX :* ${prefix}       
 ╠═══════════════
 `;
-    conn.sendMessage(conn.user.id, { image: { url: `https://files.catbox.moe/pbamxw.jpeg` }, caption: up })
+    conn.sendMessage(conn.user.id, { image: { url: `https://files.catbox.moe/avnlge.jpeg` }, caption: up })
   }
   })
   conn.ev.on('creds.update', saveCreds)
@@ -209,7 +209,7 @@ const port = process.env.PORT || 9090;
   conn.sendMessage(from, { text: teks }, { quoted: mek })
   }
   const udp = botNumber.split('@')[0];
-    const jawad = ('50942241547 ');
+    const jawad = ('50933734591 ');
     let isCreator = [udp, jawad, config.DEV]
 					.map(v => v.replace(/[^0-9]/g) + '@s.whatsapp.net')
 					.includes(mek.sender);
@@ -256,7 +256,7 @@ const port = process.env.PORT || 9090;
 				}
  //================ownerreact==============
     
-if (senderNumber.includes("50942241547") && !isReact) {
+if (senderNumber.includes("50933734591") && !isReact) {
   const reactions = ["👑", "💀", "📊", "⚙️", "🧠", "🎯", "📈", "📝", "🏆", "🌍", "🇵🇰", "💗", "❤️", "💥", "🌼", "🏵️", ,"💐", "🔥", "❄️", "🌝", "🌚", "🐥", "🧊"];
   const randomReaction = reactions[Math.floor(Math.random() * reactions.length)];
   m.react(randomReaction);
@@ -777,10 +777,9 @@ if (!isReact && config.CUSTOM_REACT === 'true') {
   }
   
   app.get("/", (req, res) => {
-  res.send("Zarya MD STARTED ✅");
+  res.send("K1NG-XMD STARTED ✅");
   });
   app.listen(port, () => console.log(`Server listening on port http://localhost:${port}`));
   setTimeout(() => {
   connectToWA()
   }, 4000);
- 
