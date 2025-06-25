@@ -25,9 +25,9 @@ cmd({
 async (conn, mek, m, { from, reply }) => {
   try {
     const totalCommands = commands.length;
+    const sender = m.sender;
     const date = moment().tz("America/Port-au-Prince").format("dddd, DD MMMM YYYY");
 
-    // 🛠️ RELE uptime() kounya:
     const uptimeFormatted = (() => {
       let sec = process.uptime();
       let h = Math.floor(sec / 3600);
@@ -38,7 +38,7 @@ async (conn, mek, m, { from, reply }) => {
 
     let menuText = `
 ╭━━━━━━━━━━━━━🌟 〘 *ZARYA MD* 〙 🌟━━━━━━━━━━━━━╮
-┃ 🔹 👤 Utilisateur : *@${m.sender.split('@')[0]}*
+┃ 🔹 👤 Utilisateur : *@${sender.split('@')[0]}*
 ┃ 🔹 ⏱️ Uptime     : *${uptimeFormatted}*
 ┃ 🔹 ⚙️ Mode       : *${config.MODE}*
 ┃ 🔹 💠 Préfixe    : *[${config.PREFIX}]*
@@ -53,6 +53,7 @@ async (conn, mek, m, { from, reply }) => {
 🩸 *_WELCOME TO ZARYA MD_* 🩸
 `;
 
+    // Organize commands by category
     let category = {};
     for (let cmd of commands) {
       if (!cmd.category) continue;
@@ -77,12 +78,10 @@ async (conn, mek, m, { from, reply }) => {
       menuText += `╰═══════════════════════════╯\n`;
     }
 
-    // Send menu with buttons
-    await zarya.sendMessage(from, {
+    // ✅ Send menu without buttons
+    await conn.sendMessage(from, {
       image: { url: config.MENU_IMAGE_URL || 'https://files.catbox.moe/pbamxw.jpeg' },
-      caption: zaryamenu,
-      buttons: buttons,
-      headerType: 4,
+      caption: menuText,
       contextInfo: {
         mentionedJid: [sender],
         forwardingScore: 999,
@@ -95,15 +94,15 @@ async (conn, mek, m, { from, reply }) => {
       }
     }, { quoted: mek });
 
-    // Optional: send voice message (kenbe oswa retire)
-    await zarya.sendMessage(from, {
-      audio: { url: 'https://files.catbox.moe/m4zrro.mp4' },
+    // ✅ Optional: Send PTT voice
+    await conn.sendMessage(from, {
+      audio: { url: 'https://files.catbox.moe/8e7mkq.mp4' },
       mimetype: 'audio/mp4',
       ptt: true
     }, { quoted: mek });
 
   } catch (e) {
-    console.error(e);
+    console.error("❌ MENU ERROR:", e);
     reply(`❌ Error: ${e.message}`);
   }
 });
