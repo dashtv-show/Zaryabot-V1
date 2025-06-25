@@ -69,9 +69,9 @@ for (const key of keys) {
     .sort((a, b) => a.pattern.localeCompare(b.pattern));
 
   cmds.forEach(cmd => {
-    const usage = cmd.pattern.split('|')[0];
-    menuText += ` •  ${config.PREFIX}${toSmallCaps(usage)}\n`;
-  });
+  const usage = cmd.pattern.split('|')[0];
+  menuText += ` ⤷  ${toSmallCaps(usage)}\n`;
+});
 
   menuText += `╰═══════════════════════════╯\n`;
 }
