@@ -11,6 +11,7 @@ cmd({
     filename: __filename,
 },
 async (conn, mek, m, { from, reply }) => {
+
     const githubRepoURL = 'https://github.com/DAWENS-BOY96/Zaryabot-V1';
 
     try {
@@ -20,9 +21,7 @@ async (conn, mek, m, { from, reply }) => {
         const [, username, repoName] = match;
 
         const response = await fetch(`https://api.github.com/repos/${username}/${repoName}`, {
-            headers: {
-                'User-Agent': 'ZARYA-MD'
-            }
+            headers: { 'User-Agent': 'ZARYA-MD' }
         });
 
         if (response.status === 503) {
@@ -35,27 +34,27 @@ async (conn, mek, m, { from, reply }) => {
 
         const repoData = await response.json();
 
-        const message = `┌──────────────────────┐
-│  💫 ZARYA-MD 𝗥𝗘𝗣𝗢  💫  
-├──────────────────────
-│ • Name: ${repoData.name}
-│ • Owner: ${repoData.owner.login}
-│ • Stars: ${repoData.stargazers_count}
-│ • Forks: ${repoData.forks_count}
-│ • URL: ${repoData.html_url}
-│ • Desc: ${repoData.description || 'None'}
-└──────────────────────┘
-> *ᴘᴏᴡᴇʀᴇᴅ ʙʏ DAWENS BOY*`;
+        const message = `
+╭━━━〘 *ZARYA-MD REPO* 〙━━━╮
+┃ 🗂️ *Nom:* ${repoData.name}
+┃ 👤 *Auteur:* ${repoData.owner.login}
+┃ ⭐ *Étoiles:* ${repoData.stargazers_count}
+┃ 🍴 *Forks:* ${repoData.forks_count}
+┃ 🔗 *Lien:* ${repoData.html_url}
+┃ 📝 *Desc:* ${repoData.description || 'Aucune description'}
+╰━━━━━━━━━━━━━━━━━━━━━━━╯
+📂 *Power by:* ᴀᴜᴛʜᴏʀ — DAWENS BOY
+        `.trim();
 
         await conn.sendMessage(from, {
-            image: { url: `https://files.catbox.moe/pbamxw.jpeg` },
+            image: { url: 'https://files.catbox.moe/pbamxw.jpeg' },
             caption: message,
-            contextInfo: { 
+            contextInfo: {
                 mentionedJid: [m.sender],
                 forwardingScore: 999,
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363401658098220@newsletter',
+                    newsletterJid: '120363419768812867@newsletter',
                     newsletterName: config.OWNER_NAME || 'ZARYA-MD',
                     serverMessageId: 143
                 }
@@ -63,7 +62,7 @@ async (conn, mek, m, { from, reply }) => {
         }, { quoted: mek });
 
     } catch (error) {
-        console.error("Repo command error:", error);
+        console.error("❌ Repo command error:", error);
         reply("❌ Une erreur est survenue lors de la récupération du dépôt.");
     }
 });
