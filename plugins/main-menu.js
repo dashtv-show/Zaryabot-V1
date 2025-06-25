@@ -77,18 +77,29 @@ async (conn, mek, m, { from, reply }) => {
       menuText += `╰═══════════════════════════╯\n`;
     }
 
-    await conn.sendMessage(from, {
-      image: { url: 'https://files.catbox.moe/pbamxw.jpeg' },
-      caption: menuText,
+    // Send menu with buttons
+    await izuka.sendMessage(from, {
+      image: { url: config.MENU_IMAGE_URL || 'https://files.catbox.moe/pbamxw.jpeg' },
+      caption: izukamenu,
+      buttons: buttons,
+      headerType: 4,
       contextInfo: {
-        mentionedJid: [m.sender],
+        mentionedJid: [sender],
         forwardingScore: 999,
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
-          newsletterName: config.OWNER_NAME || 'DAWENS BOY',
+          newsletterJid: config.newsletterJid || '120363419768812867@newsletter',
+          newsletterName: 'ZARYA-𝐌𝐃',
           serverMessageId: 143
         }
       }
+    }, { quoted: mek });
+
+    // Optional: send voice message (kenbe oswa retire)
+    await izuka.sendMessage(from, {
+      audio: { url: 'https://files.catbox.moe/m4zrro.mp4' },
+      mimetype: 'audio/mp4',
+      ptt: true
     }, { quoted: mek });
 
   } catch (e) {
