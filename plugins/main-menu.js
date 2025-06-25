@@ -78,9 +78,9 @@ async (conn, mek, m, { from, reply }) => {
     }
 
     // Send menu with buttons
-    await izuka.sendMessage(from, {
+    await zarya.sendMessage(from, {
       image: { url: config.MENU_IMAGE_URL || 'https://files.catbox.moe/pbamxw.jpeg' },
-      caption: izukamenu,
+      caption: zaryamenu,
       buttons: buttons,
       headerType: 4,
       contextInfo: {
@@ -96,7 +96,7 @@ async (conn, mek, m, { from, reply }) => {
     }, { quoted: mek });
 
     // Optional: send voice message (kenbe oswa retire)
-    await izuka.sendMessage(from, {
+    await zarya.sendMessage(from, {
       audio: { url: 'https://files.catbox.moe/m4zrro.mp4' },
       mimetype: 'audio/mp4',
       ptt: true
