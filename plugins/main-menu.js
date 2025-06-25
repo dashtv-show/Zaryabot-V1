@@ -27,13 +27,14 @@ async (conn, mek, m, { from, reply }) => {
     const totalCommands = commands.length;
     const date = moment().tz("America/Port-au-Prince").format("dddd, DD MMMM YYYY");
 
-    const uptime = () => {
+    // 🛠️ RELE uptime() kounya:
+    const uptimeFormatted = (() => {
       let sec = process.uptime();
       let h = Math.floor(sec / 3600);
       let m = Math.floor((sec % 3600) / 60);
       let s = Math.floor(sec % 60);
       return `${h}h ${m}m ${s}s`;
-    };
+    })();
 
     let menuText = `
 ╭━━━━━━━━━━━━━🌟 〘 *ZARYA MD* 〙 🌟━━━━━━━━━━━━━╮
@@ -61,20 +62,20 @@ async (conn, mek, m, { from, reply }) => {
 
     const keys = Object.keys(category).sort();
 
-for (const key of keys) {
-  menuText += `\n══════════════════\n✨ *${key.toUpperCase()}* ✨\n`;
+    for (const key of keys) {
+      menuText += `\n══════════════════\n✨ *${key.toUpperCase()}* ✨\n`;
 
-  const cmds = category[key]
-    .filter(cmd => cmd.pattern)
-    .sort((a, b) => a.pattern.localeCompare(b.pattern));
+      const cmds = category[key]
+        .filter(cmd => cmd.pattern)
+        .sort((a, b) => a.pattern.localeCompare(b.pattern));
 
-  cmds.forEach(cmd => {
-  const usage = cmd.pattern.split('|')[0];
-  menuText += ` ⤷  ${toSmallCaps(usage)}\n`;
-});
+      cmds.forEach(cmd => {
+        const usage = cmd.pattern.split('|')[0];
+        menuText += ` ⤷  ${toSmallCaps(usage)}\n`;
+      });
 
-  menuText += `╰═══════════════════════════╯\n`;
-}
+      menuText += `╰═══════════════════════════╯\n`;
+    }
 
     await conn.sendMessage(from, {
       image: { url: 'https://files.catbox.moe/pbamxw.jpeg' },
