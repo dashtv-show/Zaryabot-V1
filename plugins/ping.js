@@ -1,22 +1,26 @@
 const config = require('../config');
-const { cmd, commands } = require('../command');
+const { cmd } = require('../command');
 
 cmd({
     pattern: "ping",
-    desc: "Check bot's response time.",
+    desc: "Check bot's response speed.",
     category: "main",
-    react: "🍂",
-    filename: __filename
-},
-async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+    react: "🏓",
+    filename: __filename,
+}, 
+async (conn, mek, m, { from, reply }) => {
     try {
-        const startTime = Date.now()
-        const message = await conn.sendMessage(from, { text: '*PINGING...*' })
-        const endTime = Date.now()
-        const ping = endTime - startTime
-        await conn.sendMessage(from, { text: `> *ZARYA MD SPEED: ${ping}ms*` }, { quoted: message })
-    } catch (e) {
-        console.log(e)
-        reply(`${e}`)
+        const start = performance.now();
+        const sentMsg = await conn.sendMessage(from, { text: "*🔄 Pinging...*" });
+        const end = performance.now();
+        const ping = (end - start).toFixed(2);
+
+        await conn.sendMessage(from, {
+            text: `╭───⟪ *ZARYA-MD* ⟫───╮\n│  ⚡ *Response:* ${ping} ms\n╰────────────────────╯`,
+        }, { quoted: sentMsg });
+
+    } catch (err) {
+        console.error("Ping Error:", err);
+        reply(`❌ Error:\n${err.message}`);
     }
-})
+});
