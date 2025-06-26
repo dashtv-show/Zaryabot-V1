@@ -113,32 +113,11 @@ const port = process.env.PORT || 9090;
   console.log('Plugins installed successful ✅')
   console.log('ZARYA~MD CONNECTED SUCCESSFULLY ✅')
   
-  let up = `
-╭────── ❍ *ZARYA~MD* ❍ ──────╮
-│ 👋🏼 *Hello ZARYA~MD User!*
-│ 🎊 Meet your personal WhatsApp bot assistant.
-│ ⚡ Fast, Simple & Powerful.
-│
-│ 📌 *Your Prefix:*  ${prefix}
-│ ⚙️ *Mode:*         ${config.MODE}
-│
-│ 🔗 *Join Channel:* 
-│ https://whatsapp.com/channel/0029VbCHd5V1dAw132PB7M1B
-│
-│ ⭐ *GitHub Repo:* 
-│ https://github.com/DAWENS-BOY96/ZARYA-MD
-│
-│ 🛠️ Powered by *DAWENS TECH*
-╰────────────────────────────╯
-`;
-
-await conn.sendMessage(conn.user.id, {
-  image: { url: 'https://files.catbox.moe/pbamxw.jpeg' },
-  caption: up.trim(),
-});
-
-// 🔒 Asire sesyon an toujou sove
-conn.ev.on('creds.update', saveCreds);
+  let up = `*Hello there ZARYA-MD User! \ud83d\udc4b\ud83c\udffb* \n\n> Simple , Straight Forward But Loaded With Features \ud83c\udf8a, Meet ZARYA-MD WhatsApp Bot.\n\n *Thanks for using ZARYA-MD \ud83d\udea9* \n\n> Join WhatsApp Channel :- ⤵️\n \https://whatsapp.com/channel/0029VbAq7chIXnlyraijAX1u\n\n- *YOUR PREFIX:* = ${prefix}\n\n- *BOT MODE:* = ${config.MODE}\n\nDont forget to give star to repo ⬇️\n\nhttps://github.com/DAWENS-BOY96/ZARYA-MD\n\n> © POWERED ʙʏ DAWENS BOY \ud83d\udda4`;
+    conn.sendMessage(conn.user.id, { image: { url: `https://files.catbox.moe/pbamxw.jpeg }, caption: up })
+  }
+  })
+  conn.ev.on('creds.update', saveCreds)
 
   //==============================
 
