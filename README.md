@@ -45,7 +45,7 @@ New bot WhatsApp by dawens boy tech
 ## ⚙️ Deploy Easily
 
 ### 🔑 Get Your Session ID
-[![ZARYA MD SESSION](https://img.shields.io/badge/ZARYA%20-MD%20SESSION-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://zarya-1-6dh8.onrender.com/pair)
+[![ZARYA MD SESSION](https://img.shields.io/badge/ZARYA%20-MD%20SESSION-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://sessions-id-zarya-md.onrender.com/pair)
 
 
 ### 🔑 Get PAIR CODE
